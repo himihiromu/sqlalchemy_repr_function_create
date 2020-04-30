@@ -38,9 +38,8 @@ def init_create(string_list):
 
 def repr_create(class_name, string_list):
     ans_list = ["\n\tdef __repr__(self):", "\t\treturn "]
-    ans_list[1] += '"<' + class_name + '(' + "='%s', ".join(string_list) + "='%s')>" + '".format('
-    for s in string_list:
-        ans_list[1] += "self." + s + ', '
+    ans_list[1] += '"<' + class_name + '(' + "='%s', ".join(string_list) + "='%s')>" + '" % ('
+    ans_list[1] += "self." + ", self.".join(string_list)
     ans_list[1] = ans_list[1][:-2] + ')'
     return ans_list
 
